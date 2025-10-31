@@ -4,308 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KMI Groups — Living Room Customizer</title>
+
 <!-- Bootstrap CSS CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- custom styles -->
+<link rel="stylesheet" href="styles/room1.css">
 
-<style>
-  :root {
-    --primary-color: #4361ee;
-    --secondary-color: #3a0ca3;
-    --accent-color: #4cc9f0;
-    --light-bg: #f8f9fa;
-    --dark-text: #212529;
-    --shadow: 0 8px 30px rgba(0,0,0,0.12);
-    --transition: all 0.3s ease;
-  }
-
-  body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    text-align: center; 
-    margin: 0;
-    padding: 20px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: var(--dark-text);
-    min-height: 100vh;
-  }
-
-  .container {
-    max-width: 1200px;
-  }
-
-  header {
-    margin-bottom: 30px;
-    padding: 0 15px;
-  }
-
-  h1 {
-    font-weight: 700;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-    font-size: 2.5rem;
-  }
-
-  .subtitle {
-    color: #6c757d;
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 20px;
-  }
-
-  .image-container {
-    position: relative;
-    display: inline-block;
-    max-width: 100%;
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    background: white;
-    padding: 15px;
-  }
-
-  #roomImage {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: var(--transition);
-  }
-
-  #roomImage:hover {
-    transform: scale(1.005);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  }
-
-  /* Enhanced hotspot marker style */
-  .hotspot-marker {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    border: 3px solid white;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    animation: pulse 2s infinite ease-in-out;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
-
-  .hotspot-marker::after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: white;
-    border-radius: 50%;
-  }
-
-  @keyframes pulse {
-    0%, 100% { 
-      transform: translate(-50%, -50%) scale(1); 
-      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.5);
-    }
-    50% { 
-      transform: translate(-50%, -50%) scale(1.2); 
-      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.8);
-    }
-  }
-
-  /* Current selections display */
-  .selections-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 25px auto;
-    max-width: 800px;
-  }
-
-  .selection-item {
-    background: white;
-    border-radius: 10px;
-    padding: 12px 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: var(--transition);
-  }
-
-  .selection-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  }
-
-  .selection-icon {
-    width: 24px;
-    height: 24px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-  }
-
-  /* Enhanced modal styling */
-  .modal-content {
-    border-radius: 16px;
-    border: none;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    overflow: hidden;
-  }
-
-  .modal-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border-bottom: none;
-    padding: 20px 25px;
-  }
-
-  .modal-title {
-    font-weight: 600;
-    font-size: 1.4rem;
-  }
-
-  .btn-close {
-    filter: invert(1);
-    opacity: 0.8;
-  }
-
-  .modal-body {
-    padding: 25px;
-  }
-
-  /* Options grid inside modal */
-  #optionsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    justify-items: center;
-  }
-
-  .option-card {
-    border-radius: 12px;
-    overflow: hidden;
-    transition: var(--transition);
-    border: 2px solid transparent;
-    cursor: pointer;
-    background: white;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  }
-
-  .option-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-  }
-
-  .option-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-
-  .option-label {
-    padding: 12px;
-    font-weight: 500;
-    color: var(--dark-text);
-  }
-
-  .modal-footer {
-    border-top: 1px solid #e9ecef;
-    padding: 20px 25px;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border: none;
-    border-radius: 8px;
-    padding: 10px 25px;
-    font-weight: 500;
-    transition: var(--transition);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-    
-    .image-container {
-      padding: 10px;
-    }
-    
-    .hotspot-marker {
-      width: 28px;
-      height: 28px;
-    }
-    
-    .hotspot-marker::after {
-      width: 10px;
-      height: 10px;
-    }
-    
-    #optionsContainer {
-      grid-template-columns: 1fr;
-    }
-    
-    .selection-item {
-      padding: 10px 15px;
-      font-size: 0.9rem;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .selections-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .selection-item {
-      width: 100%;
-      max-width: 280px;
-    }
-  }
-</style>
 </head>
 
 <body>
   <div class="container">
     <header>
       <h1><i class="fas fa-couch me-2"></i>KMI Living Room Customizer</h1>
-      <p class="subtitle">Create a cozy and inviting living space perfect for relaxation and entertainment. Click a highlighted area to customize furniture, wall colors, and decor — preview KMI finishes instantly.</p>
+      <p class="subtitle">Click a highlighted area to customize furniture, wall colors, and decor — preview instantly.</p>
     </header>
 
-    <div class="selections-container">
+    <div class="selections-container text-center">
       <div class="selection-item">
-        <div class="selection-icon">
-          <i class="fas fa-palette"></i>
-        </div>
+        <div class="selection-icon"><i class="fas fa-palette"></i></div>
         <span>Wall: <strong id="currentWall">Style 1</strong></span>
       </div>
       <div class="selection-item">
-        <div class="selection-icon">
-          <i class="fas fa-th-large"></i>
-        </div>
+        <div class="selection-icon"><i class="fas fa-th-large"></i></div>
         <span>Drawer: <strong id="currentDrawer">Style 1</strong></span>
       </div>
       <div class="selection-item">
-        <div class="selection-icon">
-          <i class="fas fa-cube"></i>
-        </div>
+        <div class="selection-icon"><i class="fas fa-cube"></i></div>
         <span>Table: <strong id="currentTable">Style 1</strong></span>
       </div>
     </div>
@@ -314,17 +40,21 @@
       <img id="roomImage" src="" alt="Room Image" class="img-fluid">
     </div>
 
-    <!-- Living room descriptive card (content only — functionality unchanged) -->
+    <!-- Info card -->
     <div style="max-width:900px;margin:18px auto 0;text-align:left;">
       <div style="background:white;padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06);">
         <strong>Living Room — Make it yours</strong>
-        <p class="small text-muted" style="margin:6px 0 0;">Create a cozy and inviting living space perfect for relaxation and entertainment. Customize furniture, wall colors, and decor to match your style. Use KMI's premium sheets and veneers for durable, beautiful finishes.</p>
-        <div style="margin-top:10px;"><a class="btn btn-sm btn-primary" href="index.html" >Test in Other Room</a></div>
+        <p class="small text-muted" style="margin:6px 0 0;">
+          Create a cozy and inviting living space perfect for relaxation and entertainment. Customize furniture, wall colors, and decor to match your style.
+        </p>
+        <div style="margin-top:10px;">
+          <a class="btn btn-sm btn-primary" href="index.html">Test in Other Room</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="configModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -342,142 +72,116 @@
     </div>
   </div>
 
+  <!-- JS Logic -->
   <script>
     const roomImage = document.getElementById('roomImage');
-    const modal = document.getElementById('configModal');
     const objectName = document.getElementById('objectName');
     const optionsContainer = document.getElementById('optionsContainer');
     const imageContainer = document.querySelector('.image-container');
-    
-    // Update current selection display elements
     const currentWallEl = document.getElementById('currentWall');
     const currentDrawerEl = document.getElementById('currentDrawer');
     const currentTableEl = document.getElementById('currentTable');
 
-    /* 
-    Hotspots now defined by single (x, y) ratios between 0–1
-    These values represent % position across width/height
-    */
-    const hotspots = [
-      { name: 'Wall',  x: 0.4, y: 0.10, icon: 'fas fa-palette' }, 
-      { name: 'Table', x: 0.4, y: 0.75, icon: 'fas fa-cube' },  
-      { name: 'Drawer', x: 0.30, y: 0.30, icon: 'fas fa-th-large' }   
-    ];
+    // ✅ Object-based data
+    const roomData = {
+      Wall: [
+        { id: 1, name: "Style 1", colorImg: "assets3/sheets/wall1.png" },
+        { id: 2, name: "Style 2", colorImg: "assets3/sheets/wall2.png" },
+        { id: 3, name: "Style 3", colorImg: "assets3/sheets/wall3.png" },
+      ],
+      Drawer: [
+        { id: 1, name: "Style 1", colorImg: "assets3/sheets/cabin1.png" },
+        { id: 2, name: "Style 2", colorImg: "assets3/sheets/cabin2.png" },
+        { id: 3, name: "Style 3", colorImg: "assets3/sheets/cabin3.png" },
+      ],
+      Table: [
+        { id: 1, name: "Style 1", colorImg: "assets3/sheets/table1.png" },
+        { id: 2, name: "Style 2", colorImg: "assets3/sheets/table2.png" },
+        { id: 3, name: "Style 3", colorImg: "assets3/sheets/table3.png" },
+      ]
+    };
 
-    const variationsCount = { Wall: 3, Drawer: 3, Table: 3 };
-
-    // Store the current selected styles
-    let currentSelection = { Wall: 1, Drawer: 1, Table: 1 };
-
-    // Generate filename for current combination
-    function getImageSrc(sel) {
+    // ✅ Combination image generator
+    function getCombinationImage(sel) {
       return `assets3/room3_wall${sel.Wall}_floor${sel.Drawer}_table${sel.Table}.jpg`;
     }
 
-    // Update current selection display
+    // ✅ Hotspot definitions
+    const hotspots = [
+      { name: 'Wall', x: 0.4, y: 0.10, icon: 'fas fa-palette' },
+      { name: 'Table', x: 0.4, y: 0.75, icon: 'fas fa-cube' },
+      { name: 'Drawer', x: 0.30, y: 0.30, icon: 'fas fa-th-large' }
+    ];
+
+    let currentSelection = { Wall: 1, Drawer: 1, Table: 1 };
+
     function updateSelectionDisplay() {
-      currentWallEl.textContent = `Style ${currentSelection.Wall}`;
-      currentDrawerEl.textContent = `Style ${currentSelection.Drawer}`;
-      currentTableEl.textContent = `Style ${currentSelection.Table}`;
+      currentWallEl.textContent = roomData.Wall.find(v => v.id === currentSelection.Wall).name;
+      currentDrawerEl.textContent = roomData.Drawer.find(v => v.id === currentSelection.Drawer).name;
+      currentTableEl.textContent = roomData.Table.find(v => v.id === currentSelection.Table).name;
     }
 
-    // Draw hotspot markers using percentage positions so they scale with image
     function drawHotspots() {
       document.querySelectorAll('.hotspot-marker').forEach(el => el.remove());
-
       hotspots.forEach(h => {
         const marker = document.createElement('div');
         marker.className = 'hotspot-marker';
-        // use percentage positions so markers remain in the same relative spot
         marker.style.left = (h.x * 100) + '%';
         marker.style.top = (h.y * 100) + '%';
-        
-        // Add tooltip
-        marker.setAttribute('data-bs-toggle', 'tooltip');
-        marker.setAttribute('data-bs-placement', 'top');
-        marker.setAttribute('title', `Click to customize ${h.name}`);
-        
+        marker.title = `Click to customize ${h.name}`;
+        marker.onclick = () => openModal(h.name);
         imageContainer.appendChild(marker);
-      });
-      
-      // Initialize tooltips
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
       });
     }
 
-    // Detect click position and find closest hotspot
-    roomImage.addEventListener('click', (e) => {
-      const rect = roomImage.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-
-      // Find nearest hotspot within 5% range
-      const clicked = hotspots.find(h => 
-        Math.abs(h.x - x) < 0.05 && Math.abs(h.y - y) < 0.05
-      );
-
-      if (clicked) openModal(clicked.name);
-    });
-
-    // Redraw hotspots on resize
-    window.addEventListener('resize', drawHotspots);
-
-    // Open modal with object variations
     function openModal(object) {
-      objectName.textContent = `Select ${object} Style`;
+      objectName.textContent = `Select ${object} Color`;
       optionsContainer.innerHTML = "";
 
-      // Build a responsive grid of option thumbnails
-      for (let i = 1; i <= variationsCount[object]; i++) {
-        const newSel = { ...currentSelection, [object]: i };
-        
-        const optionCard = document.createElement('div');
-        optionCard.className = 'option-card';
-        optionCard.onclick = () => applyVariation(object, i);
+      roomData[object].forEach(variant => {
+        const newSel = { ...currentSelection, [object]: variant.id };
+
+        const card = document.createElement('div');
+        card.className = 'option-card';
+        card.onclick = () => applyVariation(object, variant.id);
 
         const img = document.createElement('img');
-        img.src = getImageSrc(newSel);
-        img.alt = `${object} Style ${i}`;
+        img.src = variant.colorImg;
         img.className = 'option-img';
+        img.alt = variant.name;
 
         const label = document.createElement('div');
         label.className = 'option-label';
-        label.textContent = `${object} Style ${i}`;
+        label.textContent = variant.name;
 
-        optionCard.appendChild(img);
-        optionCard.appendChild(label);
-        optionsContainer.appendChild(optionCard);
-      }
+        card.appendChild(img);
+        card.appendChild(label);
+        optionsContainer.appendChild(card);
+      });
 
-      // show Bootstrap modal
       const modalEl = document.getElementById('configModal');
       const bsModal = new bootstrap.Modal(modalEl);
       bsModal.show();
     }
 
-    // Apply selected variation
     function applyVariation(object, styleIndex) {
       currentSelection[object] = styleIndex;
-      roomImage.src = getImageSrc(currentSelection);
+      roomImage.src = getCombinationImage(currentSelection);
       updateSelectionDisplay();
 
-      // hide Bootstrap modal instance if present
       const modalEl = document.getElementById('configModal');
       const modalInstance = bootstrap.Modal.getInstance(modalEl);
       if (modalInstance) modalInstance.hide();
     }
 
-    // Initialize
     roomImage.onload = function() {
       drawHotspots();
       updateSelectionDisplay();
     };
-    roomImage.src = getImageSrc(currentSelection);
+    roomImage.src = getCombinationImage(currentSelection);
   </script>
 
-  <!-- Bootstrap JS (includes Popper) -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
