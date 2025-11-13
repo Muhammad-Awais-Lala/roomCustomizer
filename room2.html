@@ -82,8 +82,22 @@
     </div>
   </div>
 
+       <!-- Info card -->
+    <div style="max-width:900px;margin:18px auto 0;text-align:left;">
+      <div style="background:white;padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <strong>Home Office — Make it yours</strong>
+        <p class="small text-muted" style="margin:6px 0 0;">
+          Use the interactive markers on the image to customize different elements of your home office. Click on the wall, sheet, or table to explore various styles and colors. Watch as your selections instantly update the room's appearance, allowing you to visualize your perfect space with KMI's premium materials.
+        </p>
+        <div style="margin-top:10px;">
+          <a class="btn btn-sm btn-primary" href="index.html">Test in Other Room</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal -->
-  <div class="modal fade" id="configModal" tabindex="-1" aria-hidden="true">
+ <div class="modal fade" id="configModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -91,10 +105,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div id="optionsContainer" class="d-flex flex-wrap justify-content-center"></div>
+          <div id="optionsContainer"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Bootstrap JS -->

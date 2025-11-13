@@ -1,7 +1,7 @@
   :root {
-    --primary-color: #4361ee;
-    --secondary-color: #3a0ca3;
-    --accent-color: #4cc9f0;
+    --primary-color: #EFE223;
+    --secondary-color: #000;
+    --accent-color: #EFE223;
     --light-bg: #f8f9fa;
     --dark-text: #212529;
     --shadow: 0 8px 30px rgba(0,0,0,0.12);
@@ -13,7 +13,7 @@
     text-align: center; 
     margin: 0;
     padding: 20px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #EFE223 0%, #FFD700 100%);
     color: var(--dark-text);
     min-height: 100vh;
   }
@@ -98,11 +98,11 @@
   @keyframes pulse {
     0%, 100% { 
       transform: translate(-50%, -50%) scale(1); 
-      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.5);
+      box-shadow: 0 4px 12px rgba(239, 226, 35, 0.5);
     }
     50% { 
       transform: translate(-50%, -50%) scale(1.2); 
-      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.8);
+      box-shadow: 0 6px 20px rgba(239, 226, 35, 0.8);
     }
   }
 
@@ -153,8 +153,8 @@
   }
 
   .modal-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    background: linear-gradient(135deg, #EFE223, #FFD700);
+    color: var(--dark-text); /* Changed to dark-text for contrast with yellow header */
     border-bottom: none;
     padding: 20px 25px;
   }
@@ -215,7 +215,7 @@
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     border: none;
     border-radius: 8px;
     padding: 10px 25px;
@@ -225,7 +225,7 @@
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+    box-shadow: 0 6px 15px rgba(239, 226, 35, 0.4);
   }
 
   /* Responsive adjustments */

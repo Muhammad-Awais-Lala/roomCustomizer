@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,31 +11,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3a0ca3;
-            --accent-color: #4cc9f0;
+            --primary-color: #EFE223;
+            --secondary-color: #000;
+            --accent-color: #EFE223;
             --light-bg: #f8f9fa;
             --dark-text: #212529;
-            --shadow: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
             --transition: all 0.3s ease;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            /* background: linear-gradient(135deg, #EFE223 0%, #f0f0ef 100%); */
             color: var(--dark-text);
             min-height: 100vh;
             padding-bottom: 40px;
-        }
-
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
         }
 
         .hero-section {
@@ -48,6 +39,23 @@
             margin-bottom: 20px;
             font-size: 3rem;
         }
+        .hero-title:after {
+            content: '';
+            display: block;
+            width: 10%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        .kmi {
+            /* color: var(--primary-color); */
+                background: linear-gradient(135deg, #EFE223 0%, #FFD700 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+        }
+
 
         .hero-subtitle {
             color: #6c757d;
@@ -68,7 +76,7 @@
         .section-title:after {
             content: '';
             display: block;
-            width: 80px;
+            width: 10%;
             height: 4px;
             background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             margin: 15px auto;
@@ -87,7 +95,7 @@
 
         .room-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .card-img-top {
@@ -117,146 +125,43 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             border: none;
             border-radius: 8px;
             padding: 10px 25px;
             font-weight: 500;
             transition: var(--transition);
+            color: var(--secondary-color);
+            box-shadow: 0 3 10px rgba(255, 255, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
-        }
-
-        .features-section {
-            padding: 80px 0;
-            background-color: white;
-            border-radius: 20px;
-            margin-top: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .feature-title {
-            font-weight: 600;
-            margin-bottom: 15px;
             color: var(--secondary-color);
-        }
-
-        .feature-text {
-            color: #6c757d;
-            line-height: 1.6;
-        }
-
-        footer {
-            background: linear-gradient(135deg, var(--secondary-color), #2a0772);
-            color: white;
-            padding: 40px 0;
-            margin-top: 80px;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .footer-heading {
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 10px;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.2rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.1rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-couch me-2"></i>KMI Interior Designer</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Rooms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Design Ideas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="hero-title">Transform Your Space with KMI</h1>
-            <p class="hero-subtitle">Experience premium interior customization with KMI Groups' high-quality materials. Visualize and design your perfect space using our innovative room customization tools, featuring KMI's exclusive wooden sheets and premium finishes.</p>
+            <h1 class="hero-title">Transform Your Space with <span class="kmi">KMI</span></h1>
+            <p class="hero-subtitle">Experience premium interior customization with KMI Groups' high-quality materials.
+                Visualize and design your perfect space using our innovative room customization tools, featuring KMI's
+                exclusive wooden sheets and premium finishes.</p>
         </div>
     </section>
 
@@ -265,17 +170,7 @@
         <div class="container">
             <h2 class="section-title">Premium Interior Spaces by KMI</h2>
             <div class="row">
-                <!-- Living Room Card -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card room-card" onclick="window.location.href='room3.html'">
-                        <img src="assets3/room3_wall1_floor1_table1.jpg" class="card-img-top" alt="Living Room">
-                        <div class="card-body">
-                            <h3 class="card-title"><i class="fas fa-couch me-2"></i>Living Room</h3>
-                            <p class="card-text">Create a cozy and inviting living space perfect for relaxation and entertainment. Customize furniture, wall colors, and decor to match your style.</p>
-                            <a href="room3.html" class="btn btn-primary w-100">Customize This Room</a>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- Bedroom Card -->
                 <div class="col-lg-4 col-md-6" onclick="window.location.href='room1.html'">
@@ -283,7 +178,8 @@
                         <img src="assets1/room_wall1_floor1_table1.jpg" class="card-img-top" alt="Bedroom">
                         <div class="card-body">
                             <h3 class="card-title"><i class="fas fa-bed me-2"></i>Bedroom</h3>
-                            <p class="card-text">Design your perfect sanctuary for rest and relaxation. Personalize your bed, storage, lighting, and color scheme for the ultimate comfort.</p>
+                            <p class="card-text">Design your perfect sanctuary for rest and relaxation. Personalize your
+                                bed, storage, lighting, and color scheme for the ultimate comfort.</p>
                             <a href="room1.html" class="btn btn-primary w-100 ">Customize This Room</a>
                         </div>
                     </div>
@@ -295,8 +191,22 @@
                         <img src="assets2/room2_wall1_floor1_table1.jpg" class="card-img-top" alt="Home Office">
                         <div class="card-body">
                             <h3 class="card-title"><i class="fas fa-laptop me-2"></i>Home Office</h3>
-                            <p class="card-text">Build a productive and inspiring workspace. Customize your desk, chair, storage solutions, and lighting to boost your focus and creativity.</p>
+                            <p class="card-text">Build a productive and inspiring workspace. Customize your desk, chair,
+                                storage solutions, and lighting to boost your focus and creativity.</p>
                             <a href="room2.html" class="btn btn-primary w-100">Customize This Room</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Living Room Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card room-card" onclick="window.location.href='room3.html'">
+                        <img src="assets3/room3_wall1_floor1_table1.jpg" class="card-img-top" alt="Living Room">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-couch me-2"></i>Living Room</h3>
+                            <p class="card-text">Create a cozy and inviting living space perfect for relaxation and
+                                entertainment. Customize furniture, wall colors, and decor to match your style.</p>
+                            <a href="room3.html" class="btn btn-primary w-100">Customize This Room</a>
                         </div>
                     </div>
                 </div>
@@ -304,93 +214,12 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <h2 class="section-title">Why Choose Our Room Customizer</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="feature-icon">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3 class="feature-title text-center">Premium Materials</h3>
-                    <p class="feature-text text-center">Experience KMI's high-quality wooden sheets with durable MDF core and scratch-resistant finish, perfect for modern interiors.</p>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="feature-title text-center">Superior Quality</h3>
-                    <p class="feature-text text-center">Our materials offer high density and durability, providing solid, impact-resistant surfaces ideal for heavy-duty applications.</p>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="feature-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3 class="feature-title text-center">Modern Designs</h3>
-                    <p class="feature-text text-center">Explore sleek finishes, vibrant colors, and realistic wood textures perfect for contemporary interior applications.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h4 class="footer-heading">KMI Groups</h4>
-                    <p>Specialists in premium wooden sheets and interior solutions. Transform your spaces with our high-quality materials and innovative design tools.</p>
-                    <div class="social-icons mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Rooms</a></li>
-                        <li><a href="#">Design Ideas</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h4 class="footer-heading">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <h4 class="footer-heading">Newsletter</h4>
-                    <p>Subscribe to get updates on new features and design inspirations.</p>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Your email address">
-                        <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <p><i class="fas fa-map-marker-alt me-2"></i>Office: Chanchal Wala Road Near Sabz Mandi Jhang Road, Faisalabad.</p>
-                    <p><i class="fas fa-industry me-2"></i>Factory: 2-KM, Jhang Bhakkar Road, Mankera.</p>
-                </div>
-                <div class="col-md-6">
-                    <p><i class="fas fa-phone me-2"></i>Phone: +92 344 444 4446</p>
-                    <p class="text-center">&copy; <script>document.write(new Date().getFullYear())</script> KMI Groups. All rights reserved.</p>
-                </div>
-            </div>
-            </div>
-        </div>
-    </footer>
+
+
 
     <!-- Bootstrap JS (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
